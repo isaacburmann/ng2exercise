@@ -8,9 +8,15 @@ import { User } from '../../models/user.model';
 })
 export class AppContentComponent implements OnInit {
   user: User = {
-    picture: '',
-    firstName: 'Ahsan',
-    lastName: 'Ayaz',
+    picture: {
+      large: '',
+      medium: '',
+      thumbnail: ''
+    },
+    name: {
+      first: 'User',
+      last: 'Test',
+    },
     email: '',
     phone: ''
   };

@@ -1,7 +1,13 @@
 export interface User {
-  picture: string;
-  firstName: string;
-  lastName: string;
+  picture: {
+    large: string,
+    medium: string,
+    thumbnail: string
+  };
+  name: {
+    first: string,
+    last: string
+  };
   email: string;
   phone: string;
 }
