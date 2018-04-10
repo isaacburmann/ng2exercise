@@ -11,9 +11,9 @@ export class UsersService {
 
   getUsers(page: string, results: string) {
     const params = new HttpParams();
-    params.set('page', page);
-    params.set('results', results);
-    return this.httpClient.get<User[]>(urlUserApi, {params});
+    params.append('page', page);
+    params.append('results', results);
+    return this.httpClient.get<User[]>(urlUserApi, {params: params});
   }
 
 }
