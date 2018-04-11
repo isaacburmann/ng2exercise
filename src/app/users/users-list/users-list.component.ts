@@ -22,7 +22,7 @@ export class UsersListComponent implements OnInit {
   constructor(private usersService: UsersService) { }
 
   ngOnInit() {
-    this.usersService.getUsers('1', '5').subscribe(
+    this.usersService.getUsers('1', this.pageSize.toString()).subscribe(
       res => {
         this.users = res['results'];
         console.log(res);

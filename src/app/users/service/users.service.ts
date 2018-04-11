@@ -10,9 +10,10 @@ export class UsersService {
   constructor(private httpClient: HttpClient) { }
 
   getUsers(page: string, results: string) {
-    const params = new HttpParams();
-    params.append('page', page);
-    params.append('results', results);
+    let params = new HttpParams();
+    params = params.append('page', page);
+    params = params.append('results', results);
+    params = params.append('inc', 'id, picture, name, phone, email');
     return this.httpClient.get<User[]>(urlUserApi, {params: params});
   }
 

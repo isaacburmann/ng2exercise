@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { User } from '../../models/user.model';
 
 @Component({
@@ -21,7 +21,11 @@ export class AppHeaderComponent implements OnInit {
     phone: ''
   };
   isLoggedIn: boolean;
-  constructor() { }
+
+  @Input() logou;
+
+  constructor() {}
+
 
   ngOnInit() {
     this.isLoggedIn = false;
@@ -31,8 +35,8 @@ export class AppHeaderComponent implements OnInit {
    * @author Ahsan Ayaz
    * @desc Logs the user in
    */
-  login() {
-    this.isLoggedIn = true;
+  login(event) {
+    this.isLoggedIn = event;
   }
 
   /**

@@ -1,9 +1,16 @@
 <div class="app-content">
   <div class="user-profile" *ngIf="isLoggedIn">
     Hey {{user.name.first}} {{user.name.last}}! Good day ahead!
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/users">Users</button>
+    </mat-menu>
   </div>
   <div class="action-btn">
-    <button class="app-btn" *ngIf="!isLoggedIn" (click)="login()">Login</button>
+    <app-login [logou]="isLoggedIn" (valueChange)="login($event)"></app-login>
     <button class="app-btn" *ngIf="isLoggedIn" (click)="logout()">Logout</button>
   </div>
 </div>
+
+<router-outlet></router-outlet>
+
