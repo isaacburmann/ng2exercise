@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { User } from '../../models/user.model';
 
 @Component({
@@ -20,6 +20,7 @@ export class AppContentComponent implements OnInit {
     email: '',
     phone: ''
   };
+
   isLoggedIn: boolean;
 
   constructor() {}

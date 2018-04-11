@@ -20,9 +20,8 @@ export class AppHeaderComponent implements OnInit {
     email: '',
     phone: ''
   };
-  isLoggedIn: boolean;
 
-  @Input() logou;
+  isLoggedIn: boolean;
 
   constructor() {}
 
