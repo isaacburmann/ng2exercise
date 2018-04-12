@@ -21,7 +21,7 @@ export class AppHeaderComponent implements OnInit {
     phone: ''
   };
 
-  isLoggedIn: boolean;
+  @Input() isLoggedIn: boolean;
 
   constructor() {}
 
