@@ -17,6 +17,7 @@ export class UsersListComponent implements OnInit {
   length = 20;
   pageSize = 10;
   pageSizeOptions = [5, 10, 15, 20];
+  lastPageIndex = 0;
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -28,13 +29,14 @@ export class UsersListComponent implements OnInit {
       res => {
         this.users = res['results'];
         console.log(res);
-        for (let user of this.users) {
+        this.dbService.clearDB();
+        for (const user of this.users) {
           this.dbService.addUser(user);
         }
         this.dbService.getAllUser().then(usersAdded => {
           console.log(usersAdded);
           this.users = usersAdded;
-        })
+        });
       },
       err => console.error(err),
       () => console.log('done loading users')
@@ -43,28 +45,31 @@ export class UsersListComponent implements OnInit {
 
   nextPage($event) {
     this.pageEvent = $event;
-
-    this.dbService.clearDB();
-    this.usersService.getUsers(this.pageEvent.pageIndex.toString(), this.pageEvent.pageSize.toString()).subscribe(
-      res => {
-        this.users = res['results'];
-        console.log(res);
-        for (let user of this.users) {
-          this.dbService.addUser(user);
-        }
-        this.dbService.getAllUser().then(usersAdded => {
-          console.log(usersAdded);
-          this.users = usersAdded;
-        })
-      },
-      err => console.error(err),
-      () => console.log('done loading users')
-    );
+    console.log(this.pageEvent.pageIndex);
+    if (this.pageEvent.pageIndex > this.lastPageIndex) {
+      this.dbService.clearDB();
+      this.usersService.getUsers(this.pageEvent.pageIndex.toString(), this.pageEvent.pageSize.toString()).subscribe(
+        res => {
+          this.users = res['results'];
+          console.log(res);
+          for (const user of this.users) {
+            this.dbService.addUser(user);
+          }
+          this.dbService.getAllUser().then(usersAdded => {
+            console.log(usersAdded);
+            this.users = usersAdded;
+          });
+        },
+        err => console.error(err),
+        () => console.log('done loading users')
+      );
+    }
+    this.lastPageIndex = this.pageEvent.pageIndex;
   }
 
   userDetail(user) {
     console.log(user);
-    this.router.navigate(['/detail', user.id]);
+    this.router.navigate(['users/detail', user.id]);
   }
 
 }

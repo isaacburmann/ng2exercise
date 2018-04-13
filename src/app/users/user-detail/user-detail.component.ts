@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DbService } from '../../core/services/db.service';
+import {User} from '../../core/models/user.model';
 
 @Component({
   selector: 'app-user-detail',
@@ -8,11 +10,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {
-    this.route.params.subscribe( params => console.log(params) );
-   }
+  userId: number;
+  user: User;
+
+  constructor(private route: ActivatedRoute, private dbService: DbService) {
+    this.route.params.subscribe( params => {
+      this.userId = params['id'];
+    });
+  }
 
   ngOnInit() {
+    this.dbService.getUserById(this.userId).then(user => {
+      this.user = user;
+    });
   }
 
 }

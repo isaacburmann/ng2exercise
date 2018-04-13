@@ -7,10 +7,9 @@
     </mat-menu>
   </div>
   <div class="action-btn">
-    <app-login [logou]="isLoggedIn" (valueChange)="login($event)"></app-login>
+    <button class="app-btn" *ngIf="!isLoggedIn" (click)="login()">Login</button>
     <button class="app-btn" *ngIf="isLoggedIn" (click)="logout()">Logout</button>
   </div>
 </div>
 
 <router-outlet></router-outlet>
-

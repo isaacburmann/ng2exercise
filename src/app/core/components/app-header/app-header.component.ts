@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { User } from '../../models/user.model';
 
 @Component({
@@ -7,35 +7,24 @@ import { User } from '../../models/user.model';
   styleUrls: ['./app-header.component.scss'],
 })
 export class AppHeaderComponent implements OnInit {
-  user: User = {
-    picture: {
-      large: '',
-      medium: '',
-      thumbnail: ''
-    },
-    name: {
-      first: '',
-      last: '',
-    },
-    email: '',
-    phone: ''
-  };
 
   @Input() isLoggedIn: boolean;
+  @Input() user: User;
+  @Output() loginChange = new EventEmitter();
 
   constructor() {}
 
 
   ngOnInit() {
-    this.isLoggedIn = false;
   }
 
   /**
    * @author Ahsan Ayaz
    * @desc Logs the user in
    */
-  login(event) {
-    this.isLoggedIn = event;
+  login() {
+    // this.isLoggedIn = event;
+    this.loginChange.emit(true);
   }
 
   /**
@@ -43,7 +32,8 @@ export class AppHeaderComponent implements OnInit {
    * @desc Logs the user in
    */
   signup() {
-    this.isLoggedIn = true;
+    this.loginChange.emit(true);
+    // this.isLoggedIn = true;
   }
 
   /**
@@ -51,7 +41,8 @@ export class AppHeaderComponent implements OnInit {
    * @desc Logs the user out
    */
   logout() {
-    this.isLoggedIn = false;
+    this.loginChange.emit(false);
+    // this.isLoggedIn = false;
   }
 
 }

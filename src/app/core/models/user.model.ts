@@ -1,5 +1,5 @@
 export interface User {
-  id?: number,
+  id?: number;
   picture: {
     large: string,
     medium: string,

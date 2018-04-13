@@ -4,8 +4,8 @@ import { AppContentComponent } from './components/app-content/app-content.compon
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { MatMenuModule } from '@angular/material';
 import { AppRoutingModule } from '../app-routing.module';
-import { LoginComponent } from './components/login/login.component';
 import { DbService } from './services/db.service';
+import { BackButtonComponent } from './components/backbutton/backbutton.component';
 
 @NgModule({
   imports: [
@@ -13,8 +13,8 @@ import { DbService } from './services/db.service';
     MatMenuModule,
     AppRoutingModule
   ],
-  declarations: [AppContentComponent, AppHeaderComponent, LoginComponent],
-  exports: [AppHeaderComponent, AppContentComponent, LoginComponent],
-  providers:[DbService]
+  declarations: [AppContentComponent, AppHeaderComponent, BackButtonComponent],
+  exports: [AppHeaderComponent, AppContentComponent],
+  providers: [DbService]
 })
 export class CoreModule { }

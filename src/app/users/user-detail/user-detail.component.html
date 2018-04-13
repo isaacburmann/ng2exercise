@@ -1,3 +1,8 @@
-<p>
-  user-detail works!
-</p>
+
+
+<mat-card style="width: 128px">
+  <img [src]="user?.picture?.large">
+</mat-card>
+
+<h2 mat-line>First name: {{user?.name?.first}}</h2>
+<p mat-line><strong>Last name:</strong> {{user?.name?.last}} <strong>Phone:</strong> {{user?.phone}} <strong>Email:</strong> {{user?.email}}</p>
