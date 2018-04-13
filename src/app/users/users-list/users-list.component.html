@@ -1,6 +1,6 @@
 <mat-list>
   <h3 mat-subheader>Users List</h3>
-  <mat-list-item *ngFor="let user of users">
+  <mat-list-item (click)="userDetail(user)" *ngFor="let user of users">
     <img mat-list-icon [src]="user.picture.thumbnail" />
     <h4 mat-line>First name: {{user.name.first}} Last name: {{user.name.last}}</h4>
     <p mat-line> Phone: {{user.phone}} Email: {{user.email}}</p>

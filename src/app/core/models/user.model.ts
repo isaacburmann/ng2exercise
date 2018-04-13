@@ -1,4 +1,5 @@
 export interface User {
+  id?: number,
   picture: {
     large: string,
     medium: string,
