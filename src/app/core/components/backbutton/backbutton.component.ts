@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-back-button',
-  template: `<button mat-button (click)="goBack()">Back</button>`,
+  templateUrl: './backbutton.component.html'
 })
 export class BackButtonComponent {
   @Input()color: string;

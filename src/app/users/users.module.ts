@@ -4,21 +4,20 @@ import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import {MatCardModule, MatIconModule, MatListModule, MatPaginatorModule} from '@angular/material';
-import {UsersService} from './service/users.service';
-import {CoreModule} from '../core/core.module';
+import { UsersService } from './service/users.service';
+import { MatListModule, MatPaginatorModule, MatCardModule, MatButtonModule } from '@angular/material';
+import { BackButtonComponent } from '../core/components/backbutton/backbutton.component';
 
 @NgModule({
   imports: [
     CommonModule,
     UsersRoutingModule,
-    CoreModule,
     MatListModule,
-    MatIconModule,
     MatPaginatorModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
-  declarations: [UsersListComponent, UserDetailComponent],
+  declarations: [UsersListComponent, UserDetailComponent, BackButtonComponent],
   providers: [UsersService]
 })
 export class UsersModule { }

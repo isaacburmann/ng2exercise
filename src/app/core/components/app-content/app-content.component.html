@@ -1,14 +1,14 @@
 <div class="app-content">
-  <div class="user-profile" *ngIf="isLoggedIn">
-    Hey {{user.name.first}} {{user.name.last}}! Good day ahead!
-    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <mat-card class="user-profile" *ngIf="isLoggedIn">
+    Hey <strong> {{user.name.first}} {{user.name.last}}</strong>! Good day ahead! &nbsp; &nbsp;
+    <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Menu</button>
+    <button class="app-btn logout-btn" mat-raised-button color="warn" *ngIf="isLoggedIn" (click)="logout()">Logout</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/users">Users</button>
     </mat-menu>
-  </div>
+  </mat-card>
   <div class="action-btn">
-    <button class="app-btn" *ngIf="!isLoggedIn" (click)="login()">Login</button>
-    <button class="app-btn" *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+    <button class="app-btn" mat-raised-button color="accent" *ngIf="!isLoggedIn" (click)="login()">Login</button>
   </div>
 </div>
 

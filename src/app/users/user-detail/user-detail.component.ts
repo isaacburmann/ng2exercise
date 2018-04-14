@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DbService } from '../../core/services/db.service';
 import {User} from '../../core/models/user.model';
@@ -6,9 +6,11 @@ import {User} from '../../core/models/user.model';
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.css']
+  styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent implements OnInit {
+
+  @Input() isLoggedIn: boolean = false;
 
   userId: number;
   user: User;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../core/models/user.model';
 import { UsersService } from '../service/users.service';
 import { PageEvent } from '@angular/material';
@@ -8,16 +8,19 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
+ 
+  @Input() isLoggedIn: boolean;
+
   users: User[];
 
   // MatPaginator Inputs
   length = 20;
   pageSize = 10;
   pageSizeOptions = [5, 10, 15, 20];
-  lastPageIndex = 0;
+  /* lastPageIndex = 0; */
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -46,7 +49,7 @@ export class UsersListComponent implements OnInit {
   nextPage($event) {
     this.pageEvent = $event;
     console.log(this.pageEvent.pageIndex);
-    if (this.pageEvent.pageIndex > this.lastPageIndex) {
+    /* if (this.pageEvent.pageIndex > this.lastPageIndex) { */
       this.dbService.clearDB();
       this.usersService.getUsers(this.pageEvent.pageIndex.toString(), this.pageEvent.pageSize.toString()).subscribe(
         res => {
@@ -63,8 +66,8 @@ export class UsersListComponent implements OnInit {
         err => console.error(err),
         () => console.log('done loading users')
       );
-    }
-    this.lastPageIndex = this.pageEvent.pageIndex;
+    /* }
+    this.lastPageIndex = this.pageEvent.pageIndex; */
   }
 
   userDetail(user) {
