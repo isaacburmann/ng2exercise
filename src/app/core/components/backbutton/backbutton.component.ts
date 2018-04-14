@@ -6,8 +6,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './backbutton.component.html'
 })
 export class BackButtonComponent {
-  @Input()color: string;
-
+  
   constructor(private location: Location) { }
 
   goBack() {

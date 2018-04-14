@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../core/models/user.model';
 import { UsersService } from '../service/users.service';
 import { PageEvent } from '@angular/material';
@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
- 
-  @Input() isLoggedIn: boolean;
 
   users: User[];
 
@@ -20,7 +18,6 @@ export class UsersListComponent implements OnInit {
   length = 20;
   pageSize = 10;
   pageSizeOptions = [5, 10, 15, 20];
-  /* lastPageIndex = 0; */
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -49,25 +46,22 @@ export class UsersListComponent implements OnInit {
   nextPage($event) {
     this.pageEvent = $event;
     console.log(this.pageEvent.pageIndex);
-    /* if (this.pageEvent.pageIndex > this.lastPageIndex) { */
-      this.dbService.clearDB();
-      this.usersService.getUsers(this.pageEvent.pageIndex.toString(), this.pageEvent.pageSize.toString()).subscribe(
-        res => {
-          this.users = res['results'];
-          console.log(res);
-          for (const user of this.users) {
-            this.dbService.addUser(user);
-          }
-          this.dbService.getAllUser().then(usersAdded => {
-            console.log(usersAdded);
-            this.users = usersAdded;
-          });
-        },
-        err => console.error(err),
-        () => console.log('done loading users')
-      );
-    /* }
-    this.lastPageIndex = this.pageEvent.pageIndex; */
+    this.dbService.clearDB();
+    this.usersService.getUsers(this.pageEvent.pageIndex.toString(), this.pageEvent.pageSize.toString()).subscribe(
+      res => {
+        this.users = res['results'];
+        console.log(res);
+        for (const user of this.users) {
+          this.dbService.addUser(user);
+        }
+        this.dbService.getAllUser().then(usersAdded => {
+          console.log(usersAdded);
+          this.users = usersAdded;
+        });
+      },
+      err => console.error(err),
+      () => console.log('done loading users')
+    );
   }
 
   userDetail(user) {

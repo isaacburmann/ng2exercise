@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DbService } from '../../core/services/db.service';
-import {User} from '../../core/models/user.model';
+import { User } from '../../core/models/user.model';
 
 @Component({
   selector: 'app-user-detail',
@@ -10,13 +10,11 @@ import {User} from '../../core/models/user.model';
 })
 export class UserDetailComponent implements OnInit {
 
-  @Input() isLoggedIn: boolean = false;
-
   userId: number;
   user: User;
 
   constructor(private route: ActivatedRoute, private dbService: DbService) {
-    this.route.params.subscribe( params => {
+    this.route.params.subscribe(params => {
       this.userId = params['id'];
     });
   }
