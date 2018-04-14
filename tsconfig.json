@@ -15,5 +15,10 @@
       "es2017",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "src/**/*",
+    "node_modules/angular2-indexeddb/index.ts",
+    "node_modules/angular2-indexeddb/angular2-indexeddb.ts",
+  ]
 }
