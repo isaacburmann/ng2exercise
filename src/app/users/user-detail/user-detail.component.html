@@ -1,10 +1,10 @@
-<div style="padding-left: 50px">
-    <app-back-button></app-back-button>
+<div class="detail">
+    <app-back-button [url]="'users'" [pageNumber]="pageNumber"></app-back-button>
 
     <mat-card style="width: 128px">
       <img [src]="user?.picture?.large">
     </mat-card>
     
-    <h2 mat-line>First name: {{user?.name?.first}}</h2>
-    <p mat-line><strong>Last name:</strong> {{user?.name?.last}} <strong>Phone:</strong> {{user?.phone}} <strong>Email:</strong> {{user?.email}}</p>
+    <h2 mat-line> {{user?.name?.first}} {{user?.name?.last}}</h2>
+    <p mat-line><strong><u>Phone:</u></strong> {{user?.phone}} &nbsp; <strong><u>Email:</u></strong> {{user?.email}}</p>
 </div>

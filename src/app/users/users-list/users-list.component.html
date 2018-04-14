@@ -1,10 +1,10 @@
-<div style="padding-left: 50px; padding-right: 50px">
+<div class="list">
     <mat-list>
-        <h3 mat-subheader>Users List</h3>
+        <h3 mat-subheader>Users</h3>
         <mat-list-item (click)="userDetail(user)" *ngFor="let user of users">
           <img mat-list-avatar [src]="user.picture.medium" />
-          <h4 mat-line>First name: {{user.name.first}} Last name: {{user.name.last}}</h4>
-          <p mat-line> Phone: {{user.phone}} Email: {{user.email}}</p>
+          <h3 mat-line><strong>{{user.name.first}} {{user.name.last}}</strong></h3>
+          <p mat-line> <u> Phone:</u> {{user.phone}} <u> Email: </u> {{user.email}}</p>
           <button mat-raised-button color="basic" (click)="userDetail(user)">Detail</button>
         </mat-list-item>
       </mat-list>
@@ -12,6 +12,7 @@
       <mat-paginator [length]="length"
                      [pageSize]="pageSize"
                      [pageSizeOptions]="pageSizeOptions"
+                     [pageIndex]="pageIndex"
                      (page)="nextPage($event)">
       </mat-paginator>
 </div>

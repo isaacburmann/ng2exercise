@@ -23,6 +23,10 @@ export class AppComponent {
     phone: ''
   };
 
+  /**
+   * @author Isaac Burmann
+   * @desc Change the user isLoggedIn state
+   */
   loginChanged(event) {
     this.isLoggedIn = event;
   }

@@ -18,20 +18,18 @@ export class AppContentComponent implements OnInit {
   }
 
   /**
-   * @author Ahsan Ayaz
+   * @author Isaac Burmann
    * @desc Logs the user in
    */
   login() {
-    // this.isLoggedIn = true;
     this.loginChange.emit(true);
   }
 
   /**
-   * @author Ahsan Ayaz
+   * @author Isaac Burmann
    * @desc Logs the user out
    */
   logout() {
-    // this.isLoggedIn = false;
     this.loginChange.emit(false);
   }
 
